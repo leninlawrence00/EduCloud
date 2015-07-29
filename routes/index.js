@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/signup',function(req,res,next){
-    res.render('signup');
+    res.render('create_students');
 })
 
 router.post('/login',function(req,res){
