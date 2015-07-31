@@ -4,10 +4,17 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+var configdb = require('./config/db.js');
+
+mongoose.connect(configdb.url,function(){
+    console.log('connected to database');
+})
 
 var routes = require('./routes/index');
 var studentroutes = require('./routes/students/reg_and_auth');
 
+var adminroutes = require('./routes/admin/reg_and_auth');
 
 var app = express();
 
@@ -25,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/student',studentroutes);
+app.use('/admin',adminroutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
