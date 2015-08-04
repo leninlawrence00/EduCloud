@@ -13,7 +13,7 @@ router.get("/view",function(req,res){
 });
 
 router.post("/add",function(req,res){
-    console.log(req.body);
+
     for(var i in req.body)
     {
         if(!validate.isRequired(req.body[i]))
